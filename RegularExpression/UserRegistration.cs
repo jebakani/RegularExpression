@@ -34,8 +34,19 @@ namespace RegularExpression
             {
                   Console.WriteLine("{0}-->Invalid", mail);
             }
-            
-
+        }
+        public void MobileNumberCheck(string number)
+        {
+            string pattern = @"^[1-9]{2}\s[1-9][0-9]{9}$";
+            Regex regex = new Regex(pattern);
+            if(regex.IsMatch(number))
+            {
+                Console.WriteLine("{0} is valid",number);
+            }
+            else
+            {
+                Console.WriteLine("{0} is invalid",number);
+            }
         }
     }
 }

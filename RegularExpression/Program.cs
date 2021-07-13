@@ -20,6 +20,9 @@ namespace RegularExpression
             Console.Write("enter email:");
             string email = Console.ReadLine();
             user.EmailCheck(email);
+            Console.Write("enter mobile number:");
+            string number = Console.ReadLine();
+            user.MobileNumberCheck(number);
         }
     }
 }
