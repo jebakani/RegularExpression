@@ -8,12 +8,12 @@ namespace RegularExpression
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Regular Expression");
-            PinCodeCheck pincode = new PinCodeCheck();
-            string[] pinCodes = { "400088", "A400088", "400088B","400 088", "400A088" };
-            for (int i = 0; i < pinCodes.Length; i++)
-            {
-                pincode.CheckPin(pinCodes[i]);
-            }
+            UserRegistration user = new UserRegistration();
+            Console.WriteLine("User registration");
+            Console.Write("enter first name:");
+            string firstName = Console.ReadLine();
+            Console.Write("First name ");
+            user.CheckName(firstName);
         }
     }
 }
