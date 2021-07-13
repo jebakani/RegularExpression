@@ -11,8 +11,8 @@ namespace Email
     {
         public void EmailCheck()
         {
-            string pattern = @"^[a-zA-Z]{3}[a-zA-Z0-9]*@[a-zA-Z]+\.[a-z]{2,3}";
-            string[] mail = { "abc@gmail.com","abcdf2.com","a@tvscom." };
+            string pattern = @"^[a-zA-Z]{3}([\- \+ _\.]*[a-zA-Z0-9]+)*@[a-zA-Z0-9]+\.[a-z]{2,3}";
+            string[] mail = { "abc@gmail.com","abcdf2.com","abc+h@tvs.com", "abc@1.com" , "abc-100@yahoo.com", "abc+100@gmail.com" };
             Regex regex = new Regex(pattern);
             for (int i = 0; i < mail.Length; i++)
             {
