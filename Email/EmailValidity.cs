@@ -11,18 +11,18 @@ namespace Email
     {
         public void EmailCheck()
         {
-            string pattern = @"^[a-zA-Z]{3}@[a-zA-Z]+\.[a-z]{2,3}$";
-            string[] mail = { "abc@gmail.com","xyzgmail@.com" };
+            string pattern = @"^[a-zA-Z]{3}[a-zA-Z0-9]*";
+            string[] mail = { "abc","abcdf2","a" };
             Regex regex = new Regex(pattern);
             for (int i = 0; i < mail.Length; i++)
             {
                 if (regex.IsMatch(mail[i]))
                 {
-                    Console.WriteLine("Valid");
+                    Console.WriteLine("{0}-->Valid",mail[i]);
                 }
                 else
                 {
-                    Console.WriteLine("Invalid");
+                    Console.WriteLine("{0}-->Invalid",mail[i]);
                 }
             }
            
