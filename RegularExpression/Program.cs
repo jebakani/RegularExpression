@@ -1,5 +1,4 @@
 ﻿using System;
-using PinCode;
 
 namespace RegularExpression
 {
@@ -14,10 +13,13 @@ namespace RegularExpression
             string firstName = Console.ReadLine();
             Console.Write("First name ");
             user.CheckName(firstName);
-            Console.Write("enter first name:");
+            Console.Write("enter last name:");
             string lastName = Console.ReadLine();
             Console.Write("Last name ");
             user.CheckName(lastName);
+            Console.Write("enter email:");
+            string email = Console.ReadLine();
+            user.EmailCheck(email);
         }
     }
 }
