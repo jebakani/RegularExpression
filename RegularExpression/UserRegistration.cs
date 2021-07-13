@@ -11,7 +11,7 @@ namespace RegularExpression
     {
         public void CheckName(string name)
         {
-            string pattern = "[A-Z][a-z]{2}[a-z]*";
+            string pattern = "^[A-Z][a-z]{2}[a-z]*$";
             Regex regex = new Regex(pattern);
             if(regex.IsMatch(name))
             {

@@ -14,6 +14,10 @@ namespace RegularExpression
             string firstName = Console.ReadLine();
             Console.Write("First name ");
             user.CheckName(firstName);
+            Console.Write("enter first name:");
+            string lastName = Console.ReadLine();
+            Console.Write("Last name ");
+            user.CheckName(lastName);
         }
     }
 }
