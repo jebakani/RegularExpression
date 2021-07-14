@@ -23,6 +23,9 @@ namespace RegularExpression
             Console.Write("enter mobile number:");
             string number = Console.ReadLine();
             user.MobileNumberCheck(number);
+            Console.Write("enter password:");
+            string password = Console.ReadLine();
+            user.CheckPassword(password);
         }
     }
 }

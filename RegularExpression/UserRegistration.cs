@@ -48,5 +48,18 @@ namespace RegularExpression
                 Console.WriteLine("{0} is invalid",number);
             }
         }
+        public void CheckPassword(string password)
+        {
+            string pattern = "^[a-zA-Z0-9]{8,16}$";
+            Regex regex = new Regex(pattern);
+            if (regex.IsMatch(password))
+            {
+                Console.WriteLine("{0} is valid password", password);
+            }
+            else
+            {
+                Console.WriteLine("{0} is invalid password", password);
+            }
+        }
     }
 }
