@@ -50,7 +50,7 @@ namespace RegularExpression
         }
         public void CheckPassword(string password)
         {
-            string pattern = "^[a-zA-Z0-9]{8,16}$";
+            string pattern = "^(.*[A-Z].*)[a-z0-9]{7,}$";
             Regex regex = new Regex(pattern);
             if (regex.IsMatch(password))
             {
