@@ -7,58 +7,58 @@ using System.Text.RegularExpressions;
 
 namespace RegularExpression
 {
-    class UserRegistration
+    public class UserRegistration
     {
-        public void CheckName(string name)
+        public int CheckName(string name)
         {
             string pattern = "^[A-Z][a-z]{2}[a-z]*$";
             Regex regex = new Regex(pattern);
             if(regex.IsMatch(name))
             {
-                Console.WriteLine("{0} is Valid name",name);
+                return 1;
             }
             else
             {
-                Console.WriteLine("{0} is Invalid",name);
+                return 0;
             }
         }
-        public void EmailCheck(string mail)
+        public int EmailCheck(string mail)
         {
             string pattern = @"^[a-zA-Z]{3}([\- \+ _\.]*[a-zA-Z0-9]+)*@[a-zA-Z0-9]+\.[a-z]{2,3}(\.[a-zA-Z]{2,4}){0,1}$";
             Regex regex = new Regex(pattern);
             if (regex.IsMatch(mail))
             {
-                  Console.WriteLine("{0}-->Valid", mail);
+                return 1;
             }
             else
             {
-                  Console.WriteLine("{0}-->Invalid", mail);
+                return 0;
             }
         }
-        public void MobileNumberCheck(string number)
+        public int MobileNumberCheck(string number)
         {
             string pattern = @"^[1-9]{2}\s[1-9][0-9]{9}$";
             Regex regex = new Regex(pattern);
             if(regex.IsMatch(number))
             {
-                Console.WriteLine("{0} is valid",number);
+                return 1;
             }
             else
             {
-                Console.WriteLine("{0} is invalid",number);
+                return 0;
             }
         }
-        public void CheckPassword(string password)
+        public int  CheckPassword(string password)
         {
             string pattern = @"^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?!.*[<>`])(?=[^.,:;'!@#$%^&*_+=|(){}[?\-\]\/\\]*[.,:;'!@#$%^&*_+=|(){}[?\-\]\/\\][^.,:;'!@#$%^&*_+=|(){}[?\-\]\/\\]*$).{8,}$";
             Regex regex = new Regex(pattern);
             if (regex.IsMatch(password))
             {
-                Console.WriteLine("{0} is valid password", password);
+                return 1;
             }
             else
             {
-                Console.WriteLine("{0} is invalid password", password);
+                return 0;
             }
         }
     }
