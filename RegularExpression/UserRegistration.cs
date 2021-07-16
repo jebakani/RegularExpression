@@ -9,56 +9,107 @@ namespace RegularExpression
 {
     public class UserRegistration
     {
-        public int CheckName(string name)
+        public string CheckName(string name)
         {
             string pattern = "^[A-Z][a-z]{2}[a-z]*$";
             Regex regex = new Regex(pattern);
-            if(regex.IsMatch(name))
+            try
             {
-                return 1;
+                if (name == null)
+                {
+                    throw new CustomeException(CustomeException.ExceptionType.NULL_EXCEPTION, "Name should not be null");
+                }
+                if (name == "")
+                {
+                    throw new CustomeException(CustomeException.ExceptionType.EMPTY_EXCEPTION, "Name should not be empty");
+                }
+                if (regex.IsMatch(name))
+                {
+                    return "1";
+                }
+                else
+                {
+                    return "0";
+                }
             }
-            else
+            catch(NullReferenceException e)
             {
-                return 0;
+                return (e.Message);
             }
         }
-        public int EmailCheck(string mail)
+        public string EmailCheck(string mail)
         {
             string pattern = @"^[a-zA-Z]{3}([\- \+ _\.]*[a-zA-Z0-9]+)*@[a-zA-Z0-9]+\.[a-z]{2,3}(\.[a-zA-Z]{2,4}){0,1}$";
             Regex regex = new Regex(pattern);
-            if (regex.IsMatch(mail))
+            try
             {
-                return 1;
+                if (regex.IsMatch(mail))
+                {
+                    return "1";
+                }
+                else
+                {
+                    return "0";
+                }
             }
-            else
+            catch(Exception e)
             {
-                return 0;
+                return "Email should not be null";
             }
         }
-        public int MobileNumberCheck(string number)
+        public string MobileNumberCheck(string number)
         {
             string pattern = @"^[1-9]{2}\s[1-9][0-9]{9}$";
             Regex regex = new Regex(pattern);
-            if(regex.IsMatch(number))
+            try
             {
-                return 1;
-            }
-            else
+                if (number == null)
+                {
+                    throw new CustomeException(CustomeException.ExceptionType.NULL_EXCEPTION, "Number should not be null");
+                }
+                if (number == "")
+                {
+                    throw new CustomeException(CustomeException.ExceptionType.EMPTY_EXCEPTION, "Number should not be empty");
+                }
+                if (regex.IsMatch(number))
+                {
+                    return "1";
+                }
+                else
+                {
+                    return "0";
+                }
+            }catch (Exception e)
             {
-                return 0;
+                return (e.Message);
             }
         }
-        public int  CheckPassword(string password)
+        public string CheckPassword(string password)
         {
             string pattern = @"^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?!.*[<>`])(?=[^.,:;'!@#$%^&*_+=|(){}[?\-\]\/\\]*[.,:;'!@#$%^&*_+=|(){}[?\-\]\/\\][^.,:;'!@#$%^&*_+=|(){}[?\-\]\/\\]*$).{8,}$";
             Regex regex = new Regex(pattern);
-            if (regex.IsMatch(password))
+            try
             {
-                return 1;
+                if (password == null)
+                {
+                    throw new CustomeException(CustomeException.ExceptionType.NULL_EXCEPTION, "Password should not be null");
+                }
+                if (password == "")
+                {
+                    throw new CustomeException(CustomeException.ExceptionType.EMPTY_EXCEPTION, "Password should not be empty");
+                }
+                if (regex.IsMatch(password))
+                {
+                    return "1";
+                }
+                else
+                {
+                    return "0";
+                }
             }
-            else
+            catch(Exception e)
             {
-                return 0;
+                return (e.Message);
             }
         }
     }
