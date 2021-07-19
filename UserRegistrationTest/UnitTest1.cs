@@ -7,10 +7,12 @@ namespace UserRegistrationTest
     public class UnitTest1
     {
         UserRegistration userRegistration;
+        UserRegistrationAnnotation user;
         [TestInitialize]
         public void TestSetup()
         {
             userRegistration = new RegularExpression.UserRegistration();
+            user = new UserRegistrationAnnotation();
         }
         [TestCategory("NameTest")]
         [TestMethod]
@@ -191,5 +193,52 @@ namespace UserRegistrationTest
                 Assert.AreEqual(ce.Message, expected);
             }
         }
+        /// <summary>
+        /// Checks for validation using annotation
+         /// </summary>
+        [TestMethod]
+        public void CheckForValidation()
+        {
+            user.firstName = "Jebakani";
+            user.lastName = "Ishwarya";
+            user.phoneNumber = "9908735627";
+            user.EmailAddress = "abc@gmail.com";
+            user.Password = "Exo@chanbaek21";
+            string expected = "Satisfied all the validation";
+            string actual = UserRegistration.TestUserRegistration(user);
+            Assert.AreEqual(expected, actual);
+        }
+        /// <summary>
+        /// Checks for validation using annotation = if name is not valid 
+        /// </summary>
+        [TestMethod]
+        public void CheckForValidation1()
+        {
+            user.firstName = "je";
+            user.lastName = "Ishwarya";
+            user.phoneNumber = "9908735627";
+            user.EmailAddress = "abc@gmail.com";
+            user.Password = "Exo@chanbaek21";
+            string expected = "First Name should be min of 3";
+            string actual = UserRegistration.TestUserRegistration(user);
+            Assert.AreEqual(expected, actual);
+        }
+        /// <summary>
+        /// Checks for validation using annotation = if phone number not valid
+        /// </summary>
+        [TestMethod]
+        public void CheckForValidation2()
+        {
+            user.firstName = "Jebakani";
+            user.lastName = "Ishwarya";
+            user.phoneNumber = "99087356";
+            user.EmailAddress = "abc@gmail.com";
+            user.Password = "Exo@chanbaek21";
+            string expected = "Phone number should exactly 10";
+            string actual = UserRegistration.TestUserRegistration(user);
+            Assert.AreEqual(expected, actual);
+        }
+       
+
     }
 }

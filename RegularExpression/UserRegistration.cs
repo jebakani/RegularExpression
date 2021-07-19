@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
+using System.ComponentModel.DataAnnotations;
 
 namespace RegularExpression
 {
@@ -11,14 +12,17 @@ namespace RegularExpression
     {
         public string CheckName(string name)
         {
+            //pattern check firstletter is capital with minimum of 3 letters
             string pattern = "^[A-Z][a-z]{2}[a-z]*$";
             Regex regex = new Regex(pattern);
             try
             {
+                //if message is null throw Null exception
                 if (name == null)
                 {
                     throw new CustomeException(CustomeException.ExceptionType.NULL_EXCEPTION, "Name should not be null");
                 }
+                //if name is empty throw Empty exception
                 if (name == "")
                 {
                     throw new CustomeException(CustomeException.ExceptionType.EMPTY_EXCEPTION, "Name should not be empty");
@@ -32,6 +36,7 @@ namespace RegularExpression
                     return "0";
                 }
             }
+            //return the message
             catch(NullReferenceException e)
             {
                 return (e.Message);
@@ -39,6 +44,7 @@ namespace RegularExpression
         }
         public string EmailCheck(string mail)
         {
+            //email pattern first feild min 3 letter followed by @ then followed by word "." with com 
             string pattern = @"^[a-zA-Z]{3}([\- \+ _\.]*[a-zA-Z0-9]+)*@[a-zA-Z0-9]+\.[a-z]{2,3}(\.[a-zA-Z]{2,4}){0,1}$";
             Regex regex = new Regex(pattern);
             try
@@ -59,6 +65,7 @@ namespace RegularExpression
         }
         public string MobileNumberCheck(string number)
         {
+            //mobile number begins with country code and 10 numbers separated by space
             string pattern = @"^[1-9]{2}\s[1-9][0-9]{9}$";
             Regex regex = new Regex(pattern);
             try
@@ -86,6 +93,11 @@ namespace RegularExpression
         }
         public string CheckPassword(string password)
         {
+            //password contains
+            //1.Atleast one capital and one small letter
+            //2.Atleast one number
+            //3.exactly one special char
+            //4.minimum of 8 char
             string pattern = @"^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?!.*[<>`])(?=[^.,:;'!@#$%^&*_+=|(){}[?\-\]\/\\]*[.,:;'!@#$%^&*_+=|(){}[?\-\]\/\\][^.,:;'!@#$%^&*_+=|(){}[?\-\]\/\\]*$).{8,}$";
             Regex regex = new Regex(pattern);
             try
@@ -111,6 +123,38 @@ namespace RegularExpression
             {
                 return (e.Message);
             }
+        }
+
+        public static string TestUserRegistration(UserRegistrationAnnotation userRegistration)
+        {
+            //creating object for validation context and passing the validation class
+            ValidationContext validationContext = new ValidationContext(userRegistration,null,null);
+            //store the resukt of validation in list
+            List<ValidationResult> validationResults = new List<ValidationResult>();
+            //if all the result in lista re true 
+            bool valid = Validator.TryValidateObject(userRegistration, validationContext, validationResults, true);
+            try
+            {
+                //if any one is not valid then return the error message
+                if (!valid)
+                {
+                    foreach (ValidationResult i in validationResults)
+                    {
+                        return i.ErrorMessage;
+                    }
+                    return "No feild available";
+                }
+                //else return validation satisfied
+                else
+                {
+                    return "Satisfied all the validation";
+                }
+            }
+            catch(Exception e)
+            {
+                return e.Message;
+            }
+            
         }
     }
 }
