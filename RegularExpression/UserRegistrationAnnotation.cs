@@ -33,7 +33,7 @@ namespace RegularExpression
         [DataType(DataType.PhoneNumber)]
         [Phone]
         //legenth should be minimum of 3 and maximum of 50
-        [StringLength(10, MinimumLength = 10, ErrorMessage = "Phone number should exactly 10")]
+        [StringLength(10, MinimumLength = 10, ErrorMessage = "Phone number Should be 10 digit")]
         public string phoneNumber { get; set; }
 
         [Required(ErrorMessage = "{0} is required")]

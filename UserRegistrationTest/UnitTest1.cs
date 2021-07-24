@@ -281,7 +281,21 @@ namespace UserRegistrationTest
             string actual = userRegistration.EmailCheck(eMail);
             Assert.AreEqual(expected, actual);
         }
-        
+        /// <summary>
+        /// Checks for validation of the data using custom exception
+        /// </summary>
+        [TestMethod]
+        public void CheckValidityUsingCustomException()
+        {
+            user.firstName = "Jebakani";
+            user.lastName = "Ishwarya";
+            user.phoneNumber = "99087356";
+            user.EmailAddress = "abc@gmail.com";
+            user.Password = "Exo@chanbaek21";
+            string expected = "Phone number Should be 10 digit";
+            string actual = UserRegistration.TestUserRegistration(user);
+            Assert.AreEqual(expected, actual);
+        }
 
 
     }

@@ -140,9 +140,10 @@ namespace RegularExpression
                 {
                     foreach (ValidationResult i in validationResults)
                     {
-                        return "Sad";
+                        //throwing invalid extry exception in custom exception class
+                        throw new CustomeException(CustomeException.ExceptionType.INVALID_ENTRY_EXCEPTION, "" + i.ToString());
                     }
-                    return "Sad";
+                    throw new CustomeException(CustomeException.ExceptionType.NULL_FIELD_EXCEPTION, "No Field Found");
                 }
                 //else return validation satisfied
                 else
