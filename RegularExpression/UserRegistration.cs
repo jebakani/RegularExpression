@@ -125,6 +125,11 @@ namespace RegularExpression
             }
         }
 
+        /// <summary>
+        /// Tests the user registration.
+        /// </summary>
+        /// <param name="userRegistration">The user registration.</param>
+        /// <returns></returns>
         public static string TestUserRegistration(UserRegistrationAnnotation userRegistration)
         {
             //creating object for validation context and passing the validation class
@@ -135,21 +140,9 @@ namespace RegularExpression
             bool valid = Validator.TryValidateObject(userRegistration, validationContext, validationResults, true);
             try
             {
-                //if any one is not valid then return the error message
-                if (!valid)
-                {
-                    foreach (ValidationResult i in validationResults)
-                    {
-                        //throwing invalid extry exception in custom exception class
-                        throw new CustomeException(CustomeException.ExceptionType.INVALID_ENTRY_EXCEPTION, "" + i.ToString());
-                    }
-                    throw new CustomeException(CustomeException.ExceptionType.NULL_FIELD_EXCEPTION, "No Field Found");
-                }
-                //else return validation satisfied
-                else
-                {
-                    return "Happy";
-                }
+                //for simple validation if claid is tru return Happy else return sad
+                string result = valid ? "Happy" : "Sad";
+                return result;
             }
             catch(Exception e)
             {
