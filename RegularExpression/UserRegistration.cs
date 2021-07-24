@@ -140,14 +140,14 @@ namespace RegularExpression
                 {
                     foreach (ValidationResult i in validationResults)
                     {
-                        return i.ErrorMessage;
+                        return "Sad";
                     }
-                    return "No feild available";
+                    return "Sad";
                 }
                 //else return validation satisfied
                 else
                 {
-                    return "Satisfied all the validation";
+                    return "Happy";
                 }
             }
             catch(Exception e)

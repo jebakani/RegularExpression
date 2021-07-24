@@ -238,7 +238,37 @@ namespace UserRegistrationTest
             string actual = UserRegistration.TestUserRegistration(user);
             Assert.AreEqual(expected, actual);
         }
-       
+        /// <summary>
+        /// Checks for validation and return happy if validation is true
+        /// </summary>
+        [TestMethod]
+        public void CheckValidityAndReturnHappy()
+        {
+            user.firstName = "Jebakani";
+            user.lastName = "Ishwarya";
+            user.phoneNumber = "9908735632";
+            user.EmailAddress = "abc@gmail.com";
+            user.Password = "Exo@chanbaek21";
+            string expected = "Happy";
+            string actual = UserRegistration.TestUserRegistration(user);
+            Assert.AreEqual(expected, actual);
+        }
+        /// <summary>
+        /// Checks for validation and return sad if validation is false
+        /// </summary>
+        [TestMethod]
+        public void CheckValidityAndReturnSad()
+        {
+            user.firstName = "Jebakani";
+            user.lastName = "Ishwarya";
+            user.phoneNumber = "99087356";
+            user.EmailAddress = "abc@gmail.com";
+            user.Password = "Exo@chanbaek21";
+            string expected = "Sad";
+            string actual = UserRegistration.TestUserRegistration(user);
+            Assert.AreEqual(expected, actual);
+        }
+
 
     }
 }
